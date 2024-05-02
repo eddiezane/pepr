@@ -28,8 +28,11 @@ COPY --chown=node:node ./package.json  ./node_modules/pepr/package.json
 
 ##### DELIVER #####
 
-FROM cgr.dev/chainguard/node-lts@sha256:4648bb408354c1b8bd48ef6d8eb4de6c3386a5cb3b334329ede45ab70b6026c8
+FROM cgr.dev/chainguard/node-lts:latest-dev
 
 WORKDIR /app
 
 COPY --from=with-git --chown=node:node /app/ /app/
+
+RUN rm -rf /app/node_modules/kubernetes-fluent-client/dist
+COPY --chown=node:node ./kfc-dist/ /app/node_modules/kubernetes-fluent-client/dist/

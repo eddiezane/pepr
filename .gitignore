@@ -41,3 +41,5 @@ src/.DS_Store
 *~
 doug
 Dockerfile.controller
+
+kfc-dist

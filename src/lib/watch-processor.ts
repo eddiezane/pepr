@@ -15,7 +15,7 @@ const watchCfg: WatchCfg = {
   resyncIntervalSec: process.env.PEPR_RESYNCINTERVALSECONDS
     ? parseInt(process.env.PEPR_RESYNCINTERVALSECONDS, 10)
     : 300,
-  allowWatchBookmarks: process.env.PEPR_ALLOWWATCHBOOKMARKS ? process.env.PEPR_ALLOWWATCHBOOKMARKS === "true" : false,
+  // allowWatchBookmarks: process.env.PEPR_ALLOWWATCHBOOKMARKS ? process.env.PEPR_ALLOWWATCHBOOKMARKS === "true" : false,
 };
 
 // Map the event to the watch phase
@@ -33,6 +33,7 @@ const eventToPhaseMap = {
  * @param capabilities The capabilities to load watches for
  */
 export function setupWatch(capabilities: Capability[]) {
+  Log.debug(capabilities, `pepr capabilities`)
   capabilities.map(capability =>
     capability.bindings
       .filter(binding => binding.isWatch)
